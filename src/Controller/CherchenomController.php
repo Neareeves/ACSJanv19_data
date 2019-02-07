@@ -73,23 +73,23 @@ class CherchenomController extends AbstractController
             $reports = $serializer->serialize($numberPerYear, 'json');
 
 // create curl resourcephph
-$ch = curl_init();
+// $ch = curl_init();
 
-// set url
-https://www.cosmopolitan.fr/decouvrez-les-prenoms-qui-seront-le-plus-donnes-en-2018,2008959.asp
-// curl_setopt($ch, CURLOPT_URL, "https://www.naissance.fr/prenoms/top50/2018");
-curl_setopt($ch, CURLOPT_URL, "https://www.prenoms.com/prenom/'.$nom.'.html");
-dump("https://www.prenoms.com/prenom/'.$nom.'.html");
-//return the transfer as a string
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+// // set url
+// https://www.cosmopolitan.fr/decouvrez-les-prenoms-qui-seront-le-plus-donnes-en-2018,2008959.asp
+// // curl_setopt($ch, CURLOPT_URL, "https://www.naissance.fr/prenoms/top50/2018");
+// curl_setopt($ch, CURLOPT_URL, "https://www.prenoms.com/prenom/'.$nom.'.html");
+// dump("https://www.prenoms.com/prenom/'.$nom.'.html");
+// //return the transfer as a string
+// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-// $output contains the output string
-$output = curl_exec($ch);
-// close curl resource to free up system resources
+// // $output contains the output string
+// $output = curl_exec($ch);
+// // close curl resource to free up system resources
 
-curl_close($ch);
+// curl_close($ch);
 
-$crawler = new Crawler($output);
+// $crawler = new Crawler($output);
 
 
 // $texteFete = $crawler->filter('div.illustration > p ')->text();
