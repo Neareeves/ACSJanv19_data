@@ -31,11 +31,11 @@
 					<a href="https://www.prenoms.com/prenom/{{item.nom}}.html">{{item.nom}}</a>
 					<span class="bebe">({{item.nombre}} bébés)</span><br>
 					{% endfor %}
+					{% endif %}
 				</div>
 
 				<div class="col-md-6 col-sm-12">
 
-					{% endif %}
 					{% if noms is defined %}
 					<h3>Les cinq prénoms les moins donnés en {{ annee }} sont :</h3>
 					{% for item in noms %}

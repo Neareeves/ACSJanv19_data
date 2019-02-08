@@ -9,6 +9,8 @@ use App\Entity\Prenom;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\SerializerInterface;
+
 
 class CherchenomController extends AbstractController
 {
@@ -65,13 +67,13 @@ class CherchenomController extends AbstractController
         if (isset($_POST['inputNom'])) {
 
             $nom = $_POST['inputNom'];
-            $date = $_POST['inputDate']+1900;
+            $date = $_POST['inputDate'];
             $em = $this->getDoctrine()->getManager();
             $numberPerYear = $em->getRepository(Prenom::class)->howManyForYear($nom, $date);
 
             $serializer = $this->container->get('serializer');
             $reports = $serializer->serialize($numberPerYear, 'json');
-
+           
 // create curl resourcephph
 // $ch = curl_init();
 
@@ -102,6 +104,7 @@ class CherchenomController extends AbstractController
 // } else {
 
 // }
+
             return new Response($reports);
 
         } else {
@@ -114,14 +117,17 @@ class CherchenomController extends AbstractController
     public function searchYear() {
         if (isset($_POST['inputNom'])) {
             $nom = $_POST['inputNom'];
-             $em = $this->getDoctrine()->getManager();
+            $em = $this->getDoctrine()->getManager();
             $YearsPerName = $em->getRepository(Prenom::class)->SearchYearByName($nom);
             $serializer = $this->container->get('serializer');
             $reports = $serializer->serialize($YearsPerName, 'json');
-            dump($reports);
+             // $var = json_decode($YearsPerName, true);
+dump($YearsPerName);
+ // return $this->render('cherchenom/index.html.twig', [
+ //                'yearspername' => $var
+ //            ]);
+return new Response($reports);
 
-
-            return new Response($reports);
         } else {
             return $this->render('cherchenom/index.html.twig', [
                 'numberPerYear' => 'probleme'

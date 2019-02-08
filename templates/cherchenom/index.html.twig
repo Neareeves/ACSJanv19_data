@@ -20,13 +20,13 @@
     {% if form is defined %}
     {{ form_start(form) }}
 
-        {{ form_errors(form)}}
+    {{ form_errors(form)}}
     {# {% for item in form.placeholder %} #}
-        {{ form_label(form.Prenom, 'Prénom:') }}
-        {{form_widget(form.Prenom, {'attr': {'class': 'input_nom'}})}}
+    {{ form_label(form.Prenom, 'Prénom:') }}
+    {{form_widget(form.Prenom, {'attr': {'class': 'input_nom'}})}}
     {# {% endfor %} #}
-        {{ form_label(form.Annee, 'Année (entre 1900 et 2017):') }}
-        {{ form_widget(form.Annee, {'attr': {'class': 'input_annee'}}) }}
+    {{ form_label(form.Annee, 'Année (entre 1900 et 2017):') }}
+    {{ form_widget(form.Annee, {'attr': {'class': 'input_annee'}}) }}
 
     {{ form_end(form) }}
     {% endif %}
@@ -35,9 +35,9 @@
 
     {{numberPerYear}}
     {% endif %}
-<div id="test"></div>
+    <div id="test"></div>
     <div id="coucou">
-<p>Choisissez un nom et une date, et envoyez</p>
+        <p>Choisissez un nom et une date, et envoyez</p>
     </div>
 
     {% if contactdata is defined %}
@@ -48,10 +48,25 @@
 
 </div>
 
+
+
+
+{% if yearspername is defined %}
+{% for item in yearspername %}
+
+{{ item }}
+{% endfor %}
+{% endif %}
+
+
+
+
+
+
 {% if nom is defined %}
 <div class="scrap">
-<h3>{{nom}}</h3>
-{{texte_fete}}
+    <h3>{{nom}}</h3>
+    {{texte_fete}}
 </div>
 {% endif %}
 {# [{% for prenom in results -%}
@@ -60,33 +75,33 @@
     {%- if not loop.last %},{% endif -%}
     {%- endfor %}] #}
 
-<div class="logo">
-            <img class=" justify-content-center" src="{{ asset('build/images/logo_prenoms.png')}} " alt="Logo.">
-        </div>
-{% endblock %}
-{% block javascripts %}
+    <div class="logo">
+        <img class=" justify-content-center" src="{{ asset('build/images/logo_prenoms.png')}} " alt="Logo.">
+    </div>
+    {% endblock %}
+    {% block javascripts %}
 
-<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<script src="{{ asset('bundles/pugxautocompleter/js/autocompleter-jqueryui.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<script type="text/javascript" src="{{ asset('build/style.js') }}"></script>
-<script type="text/javascript">
-$('#cherchenom_Prenom').autocompleter({
-    url_list: '/prenom_search',
-    url_get: '/prenom_get/'
-});
-</script>
-<script type="text/javascript" src="{{ asset('build/app.js') }}"></script>
-<script type="text/javascript" src="{{ asset('build/aleth.js') }}"></script>
-<script>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="{{ asset('bundles/pugxautocompleter/js/autocompleter-jqueryui.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ asset('build/style.js') }}"></script>
+    <script type="text/javascript">
+    $('#cherchenom_Prenom').autocompleter({
+        url_list: '/prenom_search',
+        url_get: '/prenom_get/'
+    });
+    </script>
+    <script type="text/javascript" src="{{ asset('build/app.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/aleth.js') }}"></script>
+    <script>
 
 
-function loadDoc(){
+    function loadDoc(){
 
-    let inputNom = document.getElementById('fake_cherchenom_Prenom').value;
-    let inputDate = document.getElementById('cherchenom_Annee').value;
+        let inputNom = document.getElementById('fake_cherchenom_Prenom').value;
+        let inputDate = document.getElementById('cherchenom_Annee').value;
 
                             // let variable = 0;
                             // variable = document.getElementById('reponseElevePourVariable').value;
@@ -111,19 +126,13 @@ function loadDoc(){
 
 
 
-    let divDeReponses= document.getElementById('ui-id-1');
-function sendNameToGetYear(event) {
-    let inputNom = document.getElementById('fake_cherchenom_Prenom').value;
-      var xhttp = new XMLHttpRequest();
+
+                        let divDeReponses= document.getElementById('ui-id-1');
+                        function sendNameToGetYear(event) {
+                            let inputNom = document.getElementById('fake_cherchenom_Prenom').value;
+                            var xhttp = new XMLHttpRequest();
 
 
-                            xhttp.onreadystatechange = function() {
-                                if (this.readyState == 4 && this.status == 200){
-                                   
-                                    document.getElementById('test').innerHTML= JSON.parse(this.responseText)[0]['annee']+' index 0';
-                                    console.log(JSON.parse(this.responseText));
-                                }
-                            }
 
 
 
@@ -132,12 +141,57 @@ function sendNameToGetYear(event) {
                             xhttp.send('inputNom=' + inputNom);
 
 // alert(inputNom);
-    
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200){
+
+
+        console.log(JSON.parse(this.responseText).length);
+        let select = document.getElementById('cherchenom_Annee');
+        // Array.prototype.slice.call(document.querySelectorAll('#cherchenom_Annee option'));
+
+        let tableau = JSON.parse(this.responseText);
+
+     if (tableau.length <2) {
+           document.getElementById('test').innerHTML= 'Navré mais '+inputNom+' a été donné moins de trois fois, nous ne pouvons pas faire de calcul.';
+           document.getElementById('coucou').innerHTML= 'Choisissez un nom et une date, et envoyez';
+
+     } else {
+
+            function trieLesAnnees() {
+            let chaine = "";
+            for (var j = 0; j < tableau.length-1; j++) {
+                chaine += '<option value="'+tableau[j].annee+'">'+tableau[j].annee+'</option>';
+
+                
+
+}
+select.innerHTML = chaine;
+document.getElementById('test').innerHTML= ' ';
+document.getElementById('coucou').innerHTML= 'Choisissez un nom et une date, et envoyez';
+}
+trieLesAnnees();
+     }
+}
+}
+
 }
 
 
 //ajouter déclenchement entrée
 divDeReponses.addEventListener('click',sendNameToGetYear);
 
-                        </script>
-                        {% endblock %}
+
+/**********select des années*/
+// let optionsSelect = document.querySelectorAll('#cherchenom_Annee option');
+// console.log(optionsSelect)
+// ;
+// function trieLesAnnees() {
+// for (var i = 0; i < optionsSelect.length; i++) {
+//     console.log(optionsSelect[i]);
+// }
+
+// }
+// trieLesAnnees();
+</script>
+{% endblock %}
+{# queryselector sur les options et remplacer avec une boucle  #}

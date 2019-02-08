@@ -22,7 +22,7 @@ class CherchenomType extends AbstractType
         $builder
             ->add('Prenom', AutocompleteType::class, ['class' => Prenom::class])
             ->add('Annee', ChoiceType::class, [
-            'choices'=> $choices,
+            // 'choices'=> '',
             'attr' => ['class' => 'custom-select'],
             ])
             // ->add('Département')
